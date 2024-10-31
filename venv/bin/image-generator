@@ -1,0 +1,4 @@
+#!/Users/imtaeyeon/smu-hackerton/hackerthon_real/venv/bin/python3.12
+from openbaton.main import main
+
+main()
