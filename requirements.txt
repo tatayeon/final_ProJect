@@ -1,4 +1,0 @@
-boto3
-streamlit
-pandas
-langchain_aws
