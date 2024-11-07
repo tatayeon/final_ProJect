@@ -3,3 +3,4 @@ streamlit
 pandas
 langchain_aws
 langchain_community
+plotly
