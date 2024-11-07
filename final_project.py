@@ -170,11 +170,11 @@ with st.sidebar:
             evaluation_elements = ""
             for chunk in response_stream:
                 evaluation_elements += chunk.content
-
+            
             # 디버깅을 위한 평가 요소 출력
-            st.write("Evaluation Elements Response:")
-            st.write(evaluation_elements)
-
+            #st.write("Evaluation Elements Response:")
+            #st.write(evaluation_elements)
+            
             evaluation_elements_list = [e.strip() for e in evaluation_elements.split('\n') if e.strip()]
             st.session_state['evaluation_elements_list'] = evaluation_elements_list
 
@@ -186,7 +186,7 @@ with st.sidebar:
                 f"0에 가까울수록 창의성이 중요하지 않다, 깐깐하다\n\n"
                 f"이런 특징을 가진다.\n\n"
                 f"점수를 평가하는 요소는 {', '.join(evaluation_elements_list)} 이야\n"
-                f"총점은 각각의 점수 100점씩해서 600점이야\n\n"
+                f"총점은 내가고른리스트들로만해서 평균점수를 내줘 \n\n"
                 f"너는 {st.session_state.get('major', '과목')} 교수이고\n"
                 f"각 성격 항목에 대해 순서대로 {st.session_state.get('creativity_weight', 0)},{st.session_state.get('lenient_weight', 0)}의 가중치를 가지고 있어\n\n"
                 f"이건 내가 제출한 과제야\n"
@@ -205,8 +205,8 @@ with st.sidebar:
                 feedback_response += chunk.content
 
             # 디버깅을 위한 피드백 응답 출력
-            st.write("Feedback Response:")
-            st.write(feedback_response)
+            # st.write("Feedback Response:")
+             #st.write(feedback_response)
 
             # 평가 요소별 점수 추출
             for element in evaluation_elements_list:
@@ -257,7 +257,7 @@ if 'evaluation_elements_list' in st.session_state and 'evaluation_scores' in st.
                     f"각 성격 항목에 대해 순서대로 {st.session_state.get('creativity_weight', 0)},{st.session_state.get('lenient_weight', 0)}의 가중치를 가지고 있어\n\n"
                     f"이건 내가 제출한 과제야\n"
                     f"{st.session_state.get('assignment_content', '과제 내용이 없습니다.')}\n\n"
-                    f"평가 항목에 따라 점수를 알려주고 피드백해줘"
+                    f"평가 항목에 따라 점수를 알려주고 자세히 피드백해줘"
                 )
 
                 # 피드백 요청
