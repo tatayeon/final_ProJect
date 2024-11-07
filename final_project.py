@@ -12,9 +12,18 @@ import json
 import os
 import random
 
-# Bedrock 클라이언트 설정
-bedrock_runtime = boto3.client(service_name="bedrock-runtime", region_name="ap-northeast-2")
+# Streamlit secrets에서 자격 증명 불러오기
+aws_access_key_id = st.secrets["aws"]["AWS_ACCESS_KEY_ID"]
+aws_secret_access_key = st.secrets["aws"]["AWS_SECRET_ACCESS_KEY"]
+region_name = st.secrets["aws"]["AWS_DEFAULT_REGION"]
 
+# Boto3 클라이언트 생성
+bedrock_runtime = boto3.client(
+    service_name="bedrock-runtime",
+    region_name=region_name,
+    aws_access_key_id=aws_access_key_id,
+    aws_secret_access_key=aws_secret_access_key
+)
 
 
 # Claude 3.5 파라미터 설정
